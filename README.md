@@ -1,8 +1,7 @@
 
-# Tailscale MTU Persistent Configuration ⚙️
+# Tailscale MTU Configuration ⚙️
 
 This repository provides step-by-step instructions and scripts to make the MTU configuration for Tailscale persistent on both Linux and Windows. Each section is tailored to its operating system and includes explanations for every step.
-
 
 
 ## Why Adjust the MTU? 🤔
@@ -72,7 +71,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
      .\setup-tailscale-task.ps1
      ```
 
-### How It Works ⚙️
+### Explanation 📝
 
 - The script creates a scheduled task named `Tailscale-MTU`.
 - The task runs a PowerShell command in the background to monitor the Tailscale interface.
@@ -103,7 +102,7 @@ You can modify the MTU value to suit your needs. Replace `1500` in the commands 
 
 For Linux, modify the `RUN+="/sbin/ip link set dev tailscale0 mtu 1500"` line in the `udev` rule file to set your preferred MTU value.
 
-For Windows, update the `1500` in the PowerShell script on $scriptCommand part to the MTU value you want.
+For Windows, update the `1500` in the PowerShell script on `$scriptCommand` part to the MTU value you want.
 
 ---
 
