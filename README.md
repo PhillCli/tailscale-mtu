@@ -35,7 +35,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
    - Paste the following content into the file:
      ```bash
-     ACTION=="add", SUBSYSTEM=="net", KERNEL=="tailscale0", ENV{DISABLE_RULE}=="1", RUN+="/sbin/ip link set dev tailscale0 mtu 1500"
+     ACTION=="add", SUBSYSTEM=="net", KERNEL=="tailscale0", RUN+="/sbin/ip link set dev tailscale0 mtu 1500"
      ```
 
 3. **Reload the rules and apply them:**
@@ -44,6 +44,12 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
      ```bash
      sudo udevadm control --reload-rules
      sudo udevadm trigger
+     ```
+
+4. **Check the MTU size** ✅
+   - Verify if the MTU for the `tailscale0` interface has been set to `1500`:
+     ```bash
+     ip link show tailscale0
      ```
 
 ### Explanation 📝
@@ -76,6 +82,12 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; ./windows-setup.ps1
      ```
 
+3. **Reboot Windows and check MTU size** ✅
+   - After rebooting, open a PowerShell terminal and verify the MTU size of the Tailscale interface:
+     ```powershell
+     netsh interface ipv4 show interfaces
+     ```
+
 ### Explanation 📝
 
 Here’s what the PowerShell script does step by step:
@@ -90,7 +102,6 @@ Here’s what the PowerShell script does step by step:
 
 ---
 
-<br>
 
 ### Note 📜
 
