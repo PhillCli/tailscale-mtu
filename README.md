@@ -65,8 +65,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 1. **Download the PowerShell script:**
 
-   - Save the [windows-setup.ps1](https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/main/windows-setup.ps1) file to your computer.  
-   *(Tip: If the browser shows the script as plain text, right-click the link and choose "Save link as..." to download it.)*
+   - Save the [windows-setup.ps1](./windows-setup.ps1) file to your computer.  
 
 2. **Run the script as Administrator:**
 
@@ -74,12 +73,13 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
    - Navigate to the directory where the script is saved.
    - Execute the script:
      ```powershell
-     .\windows-setup.ps1
+     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; ./windows-setup.ps1
      ```
 
 ### Explanation 📝
 
 Here’s what the PowerShell script does step by step:
+- The first part of the command, `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`, temporarily allows unsigned scripts to run in the current session without changing the system's global execution policy.
 - **`$taskName`**: Names the task as `Tailscale-MTU`.
 - **`$scriptCommand`**: Continuously monitors the `Tailscale` interface and adjusts the MTU if needed.
 - **Scheduled Task Settings**:
