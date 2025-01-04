@@ -18,3 +18,7 @@ $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoi
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Description $taskDescription -Force
 
 Start-ScheduledTask -TaskName $taskName
+
+Start-Sleep -Seconds 2
+
+netsh interface ipv4 show interfaces
