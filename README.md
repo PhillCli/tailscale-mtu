@@ -61,7 +61,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 1. **Download the PowerShell script:**
 
-   - Save the [windows-setup.ps1](./windows-setup.ps1) file to your computer.
+   - Save the [windows-setup.ps1](https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/main/windows-setup.ps1) file to your computer.
 
 2. **Run the script as Administrator:**
 
