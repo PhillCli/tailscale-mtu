@@ -123,6 +123,15 @@ Here’s what the bash script does step by step:
      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; ./windows-setup.ps1
      ```
 
+3. **Verify the MTU configuration:**
+
+   - The script automatically displays the current MTU value for the Tailscale interface after execution.
+   - If you wish to check the MTU again later, you can run the following command:
+     ```powershell
+     netsh interface ipv4 show interfaces
+     ```
+   - Locate the Tailscale interface in the output and confirm that the MTU column displays **1500**.
+
 ---
 
 
