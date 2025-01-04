@@ -43,7 +43,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
    - Run the following commands to activate the new rule:
      ```bash
      sudo udevadm control --reload-rules
-     sudo udevadm trigger
+     sudo udevadm trigger --subsystem-match=net --action=add
      ```
 
 4. **Check the MTU size**
