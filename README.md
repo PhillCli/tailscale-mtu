@@ -1,4 +1,6 @@
-![Tailscale Logo](./tailscale-logo.png)
+<div align="center">
+    <img src="./tailscale-logo.png" alt="Tailscale Logo">
+</div>
 
 # Tailscale MTU Configuration ⚙️
 
@@ -72,7 +74,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
    - Navigate to the directory where the script is saved.
    - Execute the script:
      ```powershell
-     .\setup-tailscale-task.ps1
+     .\windows-setup.ps1
      ```
 
 ### Explanation 📝
