@@ -46,7 +46,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
      sudo udevadm trigger
      ```
 
-4. **Check the MTU size** ✅
+4. **Check the MTU size**
    - Verify if the MTU for the `tailscale0` interface has been set to `1500`:
      ```bash
      ip link show tailscale0
@@ -67,9 +67,9 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 ## Windows Configuration 🪟
 
-### **Option 1: Automatic Execution from URL**
+### **Option 1: Automatic Setup** (Recommended) ✅
 
-1. **Run the script directly from the URL:** (Recommended)
+1. **Run the script directly from the URL:**
 
    - Open a PowerShell terminal as Administrator.
    - Run the following command:
@@ -82,7 +82,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 <br>
 
-### **Option 2: Manual Download and Execution**
+### **Option 2: Manual Setup**
 
 1. **Download the PowerShell script:**
 
@@ -96,6 +96,12 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
      ```powershell
      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; ./windows-setup.ps1
      ```
+
+<br>
+
+---
+
+<br>
 
 ### Explanation 📝
 
