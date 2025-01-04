@@ -1,3 +1,8 @@
+If (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host "This script must be run as an administrator. Please run it again using 'Run as Administrator'." -ForegroundColor Red
+    exit
+}
+
 $taskName = "Tailscale-MTU"
 $taskDescription = "Adjust MTU for Tailscale interface"
 $scriptCommand = "while (`$true) { try { Get-NetIPInterface -InterfaceAlias 'Tailscale' | Where-Object { `$_.NlMtu -ne 1500 } | ForEach-Object { Set-NetIPInterface -InterfaceAlias 'Tailscale' -NlMtuBytes 1500 }; Start-Sleep -Seconds 10 } catch { Start-Sleep -Seconds 10 } }"
