@@ -11,12 +11,12 @@ cat <<EOF > $UDEV_RULE_PATH
 ACTION=="add", SUBSYSTEM=="net", KERNEL=="tailscale0", RUN+="/sbin/ip link set dev tailscale0 mtu 1500"
 EOF
 
-# Reload udev rules and apply them
 echo "Reloading udev rules..."
 udevadm control --reload-rules
 sudo udevadm trigger --subsystem-match=net --action=add
 
-# Verify MTU setting
+sleep 2
+
 echo "Verifying MTU for tailscale0 interface..."
 MTU=$(ip link show tailscale0 | grep -oP 'mtu \K\d+')
 
