@@ -97,7 +97,7 @@ $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoi
 Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Description $taskDescription -Force
 ```
 
-### Note
+### Note 📜
 
 You can modify the MTU value to suit your needs. Replace `1500` in the commands or scripts with the desired MTU value.
 
@@ -107,6 +107,6 @@ For Windows, update the `1500` in the PowerShell script on $scriptCommand part t
 
 ---
 
-## License 📜
+## License 📄
 
 This repository is licensed under the [MIT License](./LICENSE).
