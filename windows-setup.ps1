@@ -19,7 +19,11 @@ Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Pr
 
 Start-ScheduledTask -TaskName $taskName
 
-echo "Verifying MTU for Tailscale interface..."
+Write-Host "Task Created."
+
+Start-Sleep -Seconds 1
+
+Write-Host "Verifying MTU for Tailscale interface..."
 
 Start-Sleep -Seconds 2
 
@@ -27,4 +31,4 @@ netsh interface ipv4 show interfaces
 
 Start-Sleep -Seconds 1
 
-echo "Setup complete."
+Write-Host "Setup complete."
