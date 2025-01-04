@@ -1,12 +1,10 @@
 #!/bin/bash
 
-# Check for root permissions
 if [ "$(id -u)" -ne 0 ]; then
   echo "This script must be run as root. Please use sudo."
   exit 1
 fi
 
-# Create udev rule file
 UDEV_RULE_PATH="/etc/udev/rules.d/99-tailscale-mtu.rules"
 echo 'Creating udev rule file at $UDEV_RULE_PATH...'
 cat <<EOF > $UDEV_RULE_PATH
@@ -16,7 +14,7 @@ EOF
 # Reload udev rules and apply them
 echo "Reloading udev rules..."
 udevadm control --reload-rules
-udevadm trigger
+sudo udevadm trigger --subsystem-match=net --action=add
 
 # Verify MTU setting
 echo "Verifying MTU for tailscale0 interface..."
