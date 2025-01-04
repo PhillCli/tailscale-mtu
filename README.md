@@ -1,4 +1,4 @@
-![Tailscale Logo](https://stanislas.blog/2021/08/tailscale/images/tailscale.png)
+![Tailscale Logo](./tailscale-logo.png)
 
 # Tailscale MTU Configuration ⚙️
 
