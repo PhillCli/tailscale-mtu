@@ -94,7 +94,7 @@ Here’s what the bash script does step by step:
    - Open a PowerShell terminal as Administrator.
    - Run the following command:
      ```powershell
-     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/windows-setup.ps1')); Start-Sleep -Seconds 2; netsh interface ipv4 show interfaces
+     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/windows-setup.ps1'))
      ```
 
 2. **What This Does:**
