@@ -22,7 +22,26 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 ## Linux Configuration 🐧
 
-### Steps:
+### **Option 1: Automatic Setup** (Recommended) ✅
+
+1. **Run the script directly from the URL:**
+
+   - Open a terminal and run the following command as `root`:
+     ```bash
+     curl -fsSL https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/linux-setup.sh | bash
+     ```
+
+2. **What This Does:**
+
+   - The script performs the following actions:
+     - Creates a `udev` rule to ensure the Tailscale interface (`tailscale0`) always has an MTU of **1500**.
+     - Reloads the `udev` rules and applies them.
+     - Verifies that the MTU is correctly set.
+   - This setup ensures the configuration is persistent, even after system reboots or network resets.
+
+---
+
+### **Option 2: Manual Setup**
 
 1. **Create a `udev` rule:**
 
@@ -54,10 +73,11 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 ### Explanation 📝
 
-- `ACTION=="add"`: The rule triggers when a network device is added.
-- `SUBSYSTEM=="net"`: Applies only to network devices.
-- `KERNEL=="tailscale0"`: Targets the Tailscale interface.
-- `RUN+="/sbin/ip link set dev tailscale0 mtu 1500"`: Runs the command to set the MTU to 1500.
+Here’s what the bash script does step by step:
+- **`ACTION=="add"`**: The rule triggers when a network device is added.
+- **`SUBSYSTEM=="net"`**: Applies only to network devices.
+- **`KERNEL=="tailscale0"`**: Targets the Tailscale interface.
+- **`RUN+="/sbin/ip link set dev tailscale0 mtu 1500"`**: Ensures the MTU is set to 1500 whenever the Tailscale interface is initialized.
 
 <br>
 
@@ -85,11 +105,8 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 3. **Verify MTU Configuration:**
 
    - After running the command, the MTU size of the Tailscale interface will be displayed. You can confirm that it's set to **1500**.
-<br>
 
 ---
-
-<br>
 
 ### **Option 2: Manual Setup**
 
@@ -106,11 +123,8 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; ./windows-setup.ps1
      ```
 
-<br>
-
 ---
 
-<br>
 
 ### Explanation 📝
 
@@ -122,7 +136,6 @@ Here’s what the PowerShell script does step by step:
   - `RunLevel Highest`: Ensures administrative privileges.
   - `WindowStyle Hidden`: Runs the script silently in the background.
 
-<br>
 
 ---
 
