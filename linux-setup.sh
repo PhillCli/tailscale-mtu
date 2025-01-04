@@ -16,10 +16,10 @@ udevadm control --reload-rules
 sudo udevadm trigger --subsystem-match=net --action=add
 
 for i in {1..2}; do
-  echo "Verifying MTU for tailscale0 interface..."
   sleep 1
 done
 
+echo "Verifying MTU for tailscale0 interface..."
 MTU=$(ip link show tailscale0 | grep -oP 'mtu \K\d+')
 
 if [ "$MTU" -eq 1500 ]; then
