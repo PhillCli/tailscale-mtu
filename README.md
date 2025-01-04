@@ -28,7 +28,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
    - Open a terminal and run the following command as `root`:
      ```bash
-     curl -fsSL https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/linux-setup.sh | bash
+     sudo curl -fsSL https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/linux-setup.sh | bash
      ```
 
 2. **What This Does:**
