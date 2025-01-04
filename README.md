@@ -76,6 +76,15 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
      ```powershell
      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/windows-setup.ps1')); Start-Sleep -Seconds 2; netsh interface ipv4 show interfaces
      ```
+
+2. **What This Does:**
+
+   - This script ensures that the Tailscale interface will always have an MTU of **1500**, even after a system reboot or network reset.
+   - It achieves this by creating a scheduled task that runs in the background. The task periodically checks the Tailscale interface and adjusts the MTU to 1500 if necessary, ensuring the configuration persists.
+
+3. **Verify MTU Configuration:**
+
+   - After running the command, the MTU size of the Tailscale interface will be displayed. You can confirm that it's set to **1500**.
 <br>
 
 ---
