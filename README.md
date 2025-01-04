@@ -74,7 +74,7 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
    - Open a PowerShell terminal as Administrator.
    - Run the following command:
      ```powershell
-     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/windows-setup.ps1'))
+     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/windows-setup.ps1')) ; netsh interface ipv4 show interfaces
      ```
 <br>
 
