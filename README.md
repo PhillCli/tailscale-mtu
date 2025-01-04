@@ -1,3 +1,4 @@
+![Tailscale Logo](https://stanislas.blog/2021/08/tailscale/images/tailscale.png)
 
 # Tailscale MTU Configuration ⚙️
 
@@ -8,12 +9,14 @@ This repository provides step-by-step instructions and scripts to make the MTU c
 
 Tailscale defaults to an MTU of 1280 for compatibility with most networks, but in some situations, increasing the MTU to 1500 can improve network performance. This is particularly useful in environments where fragmentation is not a concern.
 
+<br>
 
 ## Table of Contents 📋
 - [Linux Configuration 🐧](#linux-configuration-)
 - [Windows Configuration 🪟](#windows-configuration-)
 - [License 📜](#license-)
 
+<br>
 
 ## Linux Configuration 🐧
 
@@ -60,7 +63,8 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 1. **Download the PowerShell script:**
 
-   - Save the [windows-setup.ps1](https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/main/windows-setup.ps1) file to your computer.
+   - Save the [windows-setup.ps1](https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/main/windows-setup.ps1) file to your computer.  
+   *(Tip: If the browser shows the script as plain text, right-click the link and choose "Save link as..." to download it.)*
 
 2. **Run the script as Administrator:**
 
@@ -73,28 +77,16 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 ### Explanation 📝
 
-- The script creates a scheduled task named `Tailscale-MTU`.
-- The task runs a PowerShell command in the background to monitor the Tailscale interface.
+Here’s what the PowerShell script does step by step:
+- **`$taskName`**: Names the task as `Tailscale-MTU`.
+- **`$scriptCommand`**: Continuously monitors the `Tailscale` interface and adjusts the MTU if needed.
+- **Scheduled Task Settings**:
+  - `RunLevel Highest`: Ensures administrative privileges.
+  - `WindowStyle Hidden`: Runs the script silently in the background.
 
-### What’s Inside the Script? 🤔
+<br>
 
-Here’s the content of the PowerShell script:
-
-```powershell
-$taskName = "Tailscale-MTU"
-$taskDescription = "Adjust MTU for Tailscale interface"
-$scriptCommand = "while (`$true) { try { Get-NetIPInterface -InterfaceAlias 'Tailscale' | Where-Object { `$_.NlMtu -ne 1500 } | ForEach-Object { Set-NetIPInterface -InterfaceAlias 'Tailscale' -NlMtuBytes 1500 }; Start-Sleep -Seconds 10 } catch { Start-Sleep -Seconds 10 } }"
-
-$action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command `"$scriptCommand`""
-
-$trigger = New-ScheduledTaskTrigger -AtLogOn
-
-$principal = New-ScheduledTaskPrincipal -UserId $env:USERNAME -LogonType Interactive -RunLevel Highest
-
-$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -DontStopOnIdleEnd -ExecutionTimeLimit ([TimeSpan]::Zero)
-
-Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Description $taskDescription -Force
-```
+---
 
 ### Note 📜
 
