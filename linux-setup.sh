@@ -22,6 +22,8 @@ done
 echo "Verifying MTU for tailscale0 interface..."
 MTU=$(ip link show tailscale0 | grep -oP 'mtu \K\d+')
 
+ip link show tailscale0
+
 if [ "$MTU" -eq 1500 ]; then
   echo "MTU is correctly set to 1500 for the tailscale0 interface."
 else
@@ -29,3 +31,4 @@ else
 fi
 
 echo "Setup complete."
+
