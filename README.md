@@ -67,11 +67,26 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 
 ## Windows Configuration 🪟
 
-### Steps:
+### **Option 1: Automatic Execution from URL**
+
+1. **Run the script directly from the URL:** (Recommended)
+
+   - Open a PowerShell terminal as Administrator.
+   - Run the following command:
+     ```powershell
+     Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/windows-setup.ps1'))
+     ```
+<br>
+
+---
+
+<br>
+
+### **Option 2: Manual Download and Execution**
 
 1. **Download the PowerShell script:**
 
-   - Save the [windows-setup.ps1](./windows-setup.ps1) file to your computer.  
+   - Save the [windows-setup.ps1](https://raw.githubusercontent.com/luizbizzio/tailscale-mtu/refs/heads/main/windows-setup.ps1) file to your computer.
 
 2. **Run the script as Administrator:**
 
@@ -80,12 +95,6 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
    - Execute the script:
      ```powershell
      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; ./windows-setup.ps1
-     ```
-
-3. **Reboot Windows and check MTU size** ✅
-   - After rebooting, open a PowerShell terminal and verify the MTU size of the Tailscale interface:
-     ```powershell
-     netsh interface ipv4 show interfaces
      ```
 
 ### Explanation 📝
