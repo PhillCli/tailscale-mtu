@@ -15,7 +15,9 @@ echo "Reloading udev rules..."
 udevadm control --reload-rules
 sudo udevadm trigger --subsystem-match=net --action=add
 
-sleep 2
+for i in {1..2}; do
+  sleep 1
+done
 
 echo "Verifying MTU for tailscale0 interface..."
 MTU=$(ip link show tailscale0 | grep -oP 'mtu \K\d+')
