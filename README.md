@@ -7,6 +7,21 @@
 This repository provides step-by-step instructions and scripts to make the MTU configuration for Tailscale persistent on both Linux and Windows. Each section is tailored to its operating system and includes explanations for every step.
 
 
+---
+
+## Important Considerations ⚠️
+
+- **Devices with Fixed MTU**: 
+  - If you have devices in your Tailscale network that **do not allow MTU adjustments** (e.g., smartphones, IoT devices), increasing the MTU on other devices may cause **packet fragmentation**. This can lead to performance issues, including slower speeds or connectivity problems.
+  - It is **not recommended** to use a larger MTU unless all devices in your Tailscale network support it.
+
+- **Determine the Correct MTU**:
+  - The ideal MTU value varies depending on your network configuration. It is crucial to determine the correct MTU for your network through careful testing.
+  - For example, in some configurations, a value of **1400** works well for **direct connections** between devices in the Tailscale network. However, for **DERP (relayed) connections**, using a higher MTU may lead to **packet loss** and significantly degrade network performance.
+ 
+---
+
+
 ## Why Adjust the MTU? 🤔
 
 Tailscale defaults to an MTU of 1280 for compatibility with most networks, but in some situations, increasing the MTU to 1500 can improve network performance. This is particularly useful in environments where fragmentation is not a concern.
@@ -16,7 +31,6 @@ Tailscale defaults to an MTU of 1280 for compatibility with most networks, but i
 ## Table of Contents 📋
 - [Linux Configuration 🐧](#linux-configuration-)
 - [Windows Configuration 🪟](#windows-configuration-)
-- [Important Considerations ⚠️](#important-considerations-)
 - [License 📜](#license-)
 
 <br>
@@ -148,19 +162,6 @@ Here’s what the PowerShell script does step by step:
 
 
 ---
-
-## Important Considerations ⚠️
-
-- **Devices with Fixed MTU**: 
-  - If you have devices in your Tailscale network that **do not allow MTU adjustments** (e.g., smartphones, IoT devices), increasing the MTU on other devices may cause **packet fragmentation**. This can lead to performance issues, including slower speeds or connectivity problems.
-  - It is **not recommended** to use a larger MTU unless all devices in your Tailscale network support it.
-
-- **Determine the Correct MTU**:
-  - The ideal MTU value varies depending on your network configuration. It is crucial to determine the correct MTU for your network through careful testing.
-  - For example, in some configurations, a value of **1400** works well for **direct connections** between devices in the Tailscale network. However, for **DERP (relayed) connections**, using a higher MTU may lead to **packet loss** and significantly degrade network performance.
-
----
-
 
 ### Note 📜
 
