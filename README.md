@@ -18,7 +18,8 @@ This repository provides step-by-step instructions and scripts to make the MTU c
 - **Determine the Correct MTU**:
   - The ideal MTU value varies depending on your network configuration. It is crucial to determine the correct MTU for your network through careful testing.
   - For example, in some configurations, a value of **1400** works well for **direct connections** between devices in the Tailscale network. However, for **DERP (relayed) connections**, using a higher MTU may lead to **packet loss** and significantly degrade network performance.
- 
+  - For example, Hetzner Cloud Networks maximum allowed MTU is 1450 - https://docs.hetzner.com/cloud/networks/troubleshooting/mtu/#solution
+
 ---
 
 
