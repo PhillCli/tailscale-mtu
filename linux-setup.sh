@@ -8,7 +8,7 @@ fi
 UDEV_RULE_PATH="/etc/udev/rules.d/99-tailscale-mtu.rules"
 echo 'Creating udev rule file at $UDEV_RULE_PATH...'
 cat <<EOF > $UDEV_RULE_PATH
-ACTION=="add", SUBSYSTEM=="net", KERNEL=="tailscale0", RUN+="/sbin/ip link set dev tailscale0 mtu 1500"
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="tailscale0", RUN+="/sbin/ip link set dev tailscale0 mtu 1450"
 EOF
 
 echo "Reloading udev rules..."
@@ -24,8 +24,8 @@ MTU=$(ip link show tailscale0 | grep -oP 'mtu \K\d+')
 
 ip link show tailscale0
 
-if [ "$MTU" -eq 1500 ]; then
-  echo "MTU is correctly set to 1500 for the tailscale0 interface."
+if [ "$MTU" -eq 1450 ]; then
+  echo "MTU is correctly set to 1450 for the tailscale0 interface."
 else
   echo "MTU is not set correctly. Current MTU: $MTU"
 fi
