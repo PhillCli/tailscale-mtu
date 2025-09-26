@@ -5,7 +5,7 @@ If (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 $taskName = "Tailscale-MTU"
 $taskDescription = "Adjust MTU for Tailscale interface"
-$scriptCommand = "while (`$true) { try { Get-NetIPInterface -InterfaceAlias 'Tailscale' | Where-Object { `$_.NlMtu -ne 1280 } | ForEach-Object { Set-NetIPInterface -InterfaceAlias 'Tailscale' -NlMtuBytes 1280 }; Start-Sleep -Seconds 10 } catch { Start-Sleep -Seconds 10 } }"
+$scriptCommand = "while (`$true) { try { Get-NetIPInterface -InterfaceAlias 'Tailscale' | Where-Object { `$_.NlMtu -ne 1230 } | ForEach-Object { Set-NetIPInterface -InterfaceAlias 'Tailscale' -NlMtuBytes 1230 }; Start-Sleep -Seconds 10 } catch { Start-Sleep -Seconds 10 } }"
 
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command `"$scriptCommand`""
 
